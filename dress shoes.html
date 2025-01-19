@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Footwear</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #333;
+      color: white;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .cart-btn {
+      background-color: #ff5722;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-btn:hover {
+      background-color: #e64a19;
+    }
+
+    main {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .product-price {
+      font-size: 22px;
+      color: #ff5722;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .add-to-cart-btn {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #e64a19;
+    }
+
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-modal h2 {
+      margin-top: 0;
+      font-size: 26px;
+      color: #333;
+    }
+
+    .cart-modal ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 20px 0;
+    }
+
+    .cart-modal ul li {
+      margin-bottom: 10px;
+    }
+
+    .cart-modal .checkout-btn,
+    .cart-modal .close-btn {
+      background-color: #ff5722;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .cart-modal .checkout-btn:hover,
+    .cart-modal .close-btn:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Elegant Footwear</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()">Cart (0)</button>
+  </header>
+
+  <main>
+    <section class="product-list">
+      <!-- Product Item 1 -->
+      <div class="product">
+        <img src="Classic Black Oxford.jpg" alt="Classic Black Oxford" class="product-image">
+        <h3 class="product-name">Classic Black Oxford</h3>
+        <p class="product-description">A timeless classic, perfect for formal occasions and business meetings.</p>
+        <p class="product-price">$120.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Classic Black Oxford', 120.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 2 -->
+      <div class="product">
+        <img src="Brown Leather Loafers.jpg" alt="Brown Leather Loafers" class="product-image">
+        <h3 class="product-name">Brown Leather Loafers</h3>
+        <p class="product-description">Stylish and comfortable, these loafers are perfect for both casual and formal wear.</p>
+        <p class="product-price">$110.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Brown Leather Loafers', 110.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 3 -->
+      <div class="product">
+        <img src="Wingtip Brogues.jpg" alt="Wingtip Brogues" class="product-image">
+        <h3 class="product-name">Wingtip Brogues</h3>
+        <p class="product-description">Add a touch of sophistication to your outfit with these stylish brogues.</p>
+        <p class="product-price">$140.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Wingtip Brogues', 140.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 4 -->
+      <div class="product">
+        <img src="Suede Chelsea Boots.jpg" alt="Suede Chelsea Boots" class="product-image">
+        <h3 class="product-name">Suede Chelsea Boots</h3>
+        <p class="product-description">Chic and versatile, these boots are perfect for any season.</p>
+        <p class="product-price">$150.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Suede Chelsea Boots', 150.00)">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-modal-content">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: $0.00</p>
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        <button class="close-btn" onclick="toggleCart()">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let cart = [];
+
+    function addToCart(productName, productPrice) {
+      const existingProductIndex = cart.findIndex(item => item.name === productName);
+      
+      if (existingProductIndex === -1) {
+        cart.push({ name: productName, price: productPrice, quantity: 1 });
+      } else {
+        cart[existingProductIndex].quantity++;
+      }
+
+      updateCart();
+    }
+
+    function updateCart() {
+      document.querySelector('.cart-btn').textContent = `Cart (${cart.length})`;
+
+      const cartItemsList = document.getElementById('cart-items');
+      cartItemsList.innerHTML = '';
+      
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
+        cartItemsList.appendChild(li);
+        totalPrice += item.price * item.quantity;
+      });
+
+      document.getElementById('total-price').textContent = `Total: $${totalPrice.toFixed(2)}`;
+    }
+
+    function toggleCart() {
+      const cartModal = document.getElementById('cart-modal');
+      cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function checkout() {
+      alert('Proceeding to checkout...');
+      cart = [];
+      updateCart();
+      toggleCart();
+    }
+  </script>
+
+</body>
+</html>

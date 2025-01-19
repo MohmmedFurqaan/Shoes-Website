@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Vista Community - Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #products {
+            margin: 40px 0;
+            padding: 20px;
+        }
+
+        #products h2 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 10%;
+            transition: all 0.5s ease;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 30%;
+            min-width: 280px;
+            text-align: center;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .product button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .product button:hover {
+            background-color: #519648;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            .products {
+                padding: 0 5%;
+            }
+            .product {
+                width: 45%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .products {
+                justify-content: center;
+            }
+            .product {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #products h2 {
+                font-size: 2em;
+            }
+
+            .product {
+                width: 100%;
+            }
+
+            .products {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="products">
+        <h2>Shoe Vista Community</h2>
+        <div class="products">
+            <div class="product">
+                <img src="shoe2.jfif" alt="Formal Shoes">
+                <h3>Formal Shoes</h3>
+                <p>Elegant, comfortable, and perfect for any business occasion.</p>
+                <a href="formal Shoes.html">
+                    <button class="cta-button">Shop Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="shoe1.jfif" alt="Casual Sneakers">
+                <h3>Casual Sneakers</h3>
+                <p>Classic style with modern comfort, perfect for everyday wear.</p>
+                <a href="casualsbekers.html">
+                    <button class="cta-button">Shop Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="shoe3.jfif" alt="Dress Shoes">
+                <h3>Dress Shoes</h3>
+                <p>Sophisticated designs for formal events or office wear.</p>
+            <a href="dress shoes.html">
+                <button class="cta-button">Shop Now</button>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for enhancing responsiveness
+        window.addEventListener("resize", function() {
+            const productsContainer = document.querySelector('.products');
+            if (window.innerWidth < 768) {
+                productsContainer.style.padding = "0 10px";
+            } else {
+                productsContainer.style.padding = "0 10%";
+            }
+        });
+
+        // Initial load check
+        window.dispatchEvent(new Event('resize'));
+    </script>
+</body>
+</html>

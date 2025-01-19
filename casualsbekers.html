@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe Vista</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #222;
+      color: white;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .cart-btn {
+      background-color: #28a745;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-btn:hover {
+      background-color: #218838;
+    }
+
+    /* Main Layout */
+    main {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-around;
+    }
+
+    /* Product List */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      overflow: hidden;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .product-price {
+      font-size: 20px;
+      color: #ff7f50;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .add-to-cart-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #218838;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .cart-modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-modal h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .cart-modal ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin:  20px 0;
+    }
+
+    .cart-modal ul li {
+      margin-bottom: 10px;
+    }
+
+    .cart-modal .checkout-btn,
+    .cart-modal .close-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .cart-modal .checkout-btn:hover,
+    .cart-modal .close-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">SneakerShop</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()">Cart (0)</button>
+  </header>
+
+  <main>
+    <section class="product-list">
+      <!-- Product Item 1 -->
+      <div class="product">
+        <img src="nike air.jpg" alt="Nike Air Max 270" class="product-image">
+        <h3 class="product-name">Nike Air Max 270</h3>
+        <p class="product-description">Elevate your look with these iconic Nike Air Max 270 sneakers. Combining comfort and style for an everyday essential.</p>
+        <p class="product-price">$150.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Nike Air Max 270', 150.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 2 -->
+      <div class="product">
+        <img src="Adidas Ultraboost 22.jpg" alt="Adidas Ultraboost 22" class="product-image">
+        <h3 class="product-name">Adidas Ultraboost 22</h3>
+        <p class="product-description">Experience ultimate comfort with the Adidas Ultraboost 22. Perfect for running or everyday wear, these shoes provide all-day support.</p>
+        <p class="product-price">$180.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Adidas Ultraboost 22', 180.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 3 -->
+      <div class="product">
+        <img src="Puma RS-X.jpg" alt="Puma RS-X" class="product-image">
+        <h3 class="product-name">Puma RS-X</h3>
+        <p class="product-description">The Puma RS-X brings retro vibes with modern-day performance. A versatile sneaker designed for both fashion and function.</p>
+        <p class="product-price">$130.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Puma RS-X', 130.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 4 -->
+      <div class="product">
+        <img src="Asics Gel-Kayano.webp" alt="Asics Gel-Kayano" class="product-image">
+        <h3 class="product-name">Asics Gel-Kayano</h3>
+        <p class="product-description">Designed for stability and support, the Asics Gel-Kayano is perfect for long runs and daily training.</p>
+        <p class="product-price">$160.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Asics Gel-Kayano', 160.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 5 -->
+      <div class="product">
+        <img src="Reebok Classic.jpg" alt="Reebok Classic" class="product-image">
+        <h3 class="product-name">Reebok Classic</h3>
+        <p class="product-description">A timeless sneaker that combines style and comfort, the Reebok Classic is perfect for any casual outfit.</p>
+        <p class="product-price">$85.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Reebok Classic', 85.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 6 -->
+      <div class="product">
+        <img src="Under Armour HOVR.jpg" alt="Under Armour HOVR" class="product-image">
+        < h3 class="product-name">Under Armour HOVR</h3>
+        <p class="product-description">The Under Armour HOVR provides a zero-gravity feel to maintain energy return, making it ideal for runners.</p>
+        <p class="product-price">$140.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Under Armour HOVR', 140.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 7 -->
+      <div class="product">
+        <img src="Nike React Infinity.avif" alt="Nike React Infinity" class="product-image">
+        <h3 class="product-name">Nike React Infinity</h3>
+        <p class="product-description">Engineered for comfort and support, the Nike React Infinity is perfect for long-distance running.</p>
+        <p class="product-price">$160.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Nike React Infinity', 160.00)">Add to Cart</button>
+      </div>
+
+      <!-- Product Item 8 -->
+      <div class="product">
+        <img src="Saucony Ride.jpg" alt="Saucony Ride" class="product-image">
+        <h3 class="product-name">Saucony Ride</h3>
+        <p class="product-description">The Saucony Ride is designed for a smooth ride with a balanced feel, perfect for daily training.</p>
+        <p class="product-price">$130.00</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Saucony Ride', 130.00)">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-modal-content">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: $0.00</p>
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        <button class="close-btn" onclick="toggleCart()">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let cart = [];
+
+    function addToCart(productName, productPrice) {
+      const existingProductIndex = cart.findIndex(item => item.name === productName);
+      
+      if (existingProductIndex === -1) {
+        cart.push({ name: productName, price: productPrice, quantity: 1 });
+      } else {
+        cart[existingProductIndex].quantity++;
+      }
+
+      updateCart();
+    }
+
+    function updateCart() {
+      document.querySelector('.cart-btn').textContent = `Cart (${cart.length})`;
+
+      const cartItemsList = document.getElementById('cart-items');
+      cartItemsList.innerHTML = '';
+      
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
+        cartItemsList.appendChild(li);
+        totalPrice += item.price * item.quantity;
+      });
+
+      document.getElementById('total-price').textContent = `Total: $${totalPrice.toFixed(2)}`;
+    }
+
+    function toggleCart() {
+      const cartModal = document.getElementById('cart-modal');
+      cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function checkout() {
+      alert('Proceeding to checkout...');
+      cart = [];
+      updateCart();
+      toggleCart();
+    }
+  </script>
+
+</body>
+</html>
