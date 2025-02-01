@@ -10,11 +10,13 @@
   HTML5 – Structured and semantic markup
   CSS3 – Stylish and responsive design
   JavaScript – Interactive elements and cart functionality
+  
 🔧 **How to Use**
 
   Clone or download the repository.
   Open index.html in a web browser.
   Browse through the shoes collection and interact with the cart.
+  
 📜 **License**
 
   This project is open-source under the MIT License.
